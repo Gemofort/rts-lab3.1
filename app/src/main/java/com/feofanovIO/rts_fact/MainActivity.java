@@ -2,6 +2,8 @@ package com.yaroslav_f.rts_fact;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -26,5 +28,15 @@ public class MainActivity extends AppCompatActivity {
         tvr1.setText(String.valueOf(values[0]));
         tvr2.setText(String.valueOf(values[1]));
         tvtime.setText(String.valueOf(values[2]));
+        new AlertDialog.Builder(MainActivity.this)
+            .setTitle("Finished successfully")
+            .setMessage(String.format("iterations: %s", String.valueOf(values[3])))
+            .setCancelable(true)
+            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            }).show();
     }
 }
